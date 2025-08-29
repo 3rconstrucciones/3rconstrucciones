@@ -371,7 +371,7 @@
                     </div>
                 </div>
             </div>
-            <form class="form-area mt-60" id="myForm" action="mail.php" method="post" class="contact-form text-right">
+         <form class="form-area mt-60" id="myForm" action="mail.php" method="post" class="contact-form text-right">
                 <div class="row">
                     <div class="col-lg-6 form-group">
                         <input name="name" placeholder="Ingresa tu nombre" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Ingresa tu nombre'" class="common-input mb-20 form-control" required="" type="text">
@@ -382,12 +382,17 @@
                     </div>
                     <div class="col-lg-6 form-group">
                         <textarea class="common-textarea mt-10 form-control" name="message" placeholder="Mensaje" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Mensaje'" required=""></textarea>
-                        <button class="primary-btn mt-20">Enviar mensaje<span class="lnr lnr-arrow-right"></span></button>
-                        <div class="mt-10 alert-msg">
+                     <button type="button" class="primary-btn mt-20" id="whatsapp-btn">
+    Enviar mensaje<span class="lnr lnr-arrow-right"></span>
+</button>   
+<div class="mt-10 alert-msg">
+</div>
+
                         </div>
                     </div>
+                    </form>
                 </div>
-            </form>
+            
 
         </div>
     </section>
@@ -489,6 +494,20 @@
     </script>
     <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"97572b80bef74c2c","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2025.8.0","token":"cd0b4b3a733644fc843ef0b185f98241"}'
         crossorigin="anonymous"></script>
+       <script>
+document.getElementById('whatsapp-btn').onclick = function() {
+    // Cambia este número por el tuyo en formato internacional, sin "+"
+    var numero = '56930622029'; // Usa el número que quieres recibir el mensaje
+    var nombre = document.querySelector('input[name="name"]').value;
+    var email = document.querySelector('input[name="email"]').value;
+    var asunto = document.querySelector('input[name="subject"]').value;
+    var mensaje = document.querySelector('textarea[name="message"]').value;
+
+    var texto = `Hola, mi nombre es ${nombre}. Mi correo es ${email}. Asunto: ${asunto}. Mensaje: ${mensaje}`;
+    var url = `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
+    window.open(url, '_blank');
+};
+</script>
 </body>
 
 </html>
